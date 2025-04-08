@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My orders</title>
-</head>
-<body>
+{% extends "event/base.html" %}
+{% block title %}Mes commande{% endblock %}
+{% block content %}
     <h2>Mes Commandes</h2>
     <ul>
       {% for order in orders %}
@@ -13,6 +9,5 @@
         </li>
       {% endfor %}
     </ul>
-
-</body>
-</html>
+    <a href="{% url 'process_payment' %}" class="btn btn-primary">valider</a>
+{% endblock %}

@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'event/base.html' %}
 
-</body>
-</html>
+{% block title %}Acheter des billets{% endblock %}
+
+{% block content %}
+<h2>🎫 Acheter des billets pour {{ event.title }}</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="list-group">
+    {% for ticket in event.tickets.all %}
+      <div class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <span>{{ ticket.ticket_type }} - {{ ticket.prix }}</span>
+          <input type="number" name="ticket_{{ ticket.id }}" min="0" max="{{ ticket.available_quantity }}" class="form-control w-25" placeholder="Quantité" />
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary btn-lg">Valider la commande</button>
+  </div>
+</form>
+
+{% if error %}
+  <div class="alert alert-danger mt-3">
+    {{ error }}
+  </div>
+{% endif %}
+{% endblock %}

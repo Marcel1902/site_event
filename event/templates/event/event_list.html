@@ -16,7 +16,12 @@
           <p class="card-text">{{ event.description|truncatechars:100 }}</p>
           <p class="text-muted">📍 {{ event.location }}</p>
           <p class="text-muted">🕒 {{ event.date|date:"d/m/Y H:i" }}</p>
-          <a href="{% url 'event_detail' event.id %}" class="btn btn-primary btn-sm">Voir</a>
+          <a href="{% url 'event_detail' event.id %}" class="btn btn-outline-secondary btn-sm">
+            🔍 Détails
+          </a>
+          <a href="{% url 'order_tickets' event.id %}" class="btn btn-success btn-sm">
+            <i class="fas fa-shopping-cart pe-2"></i>Buy ticket
+          </a>
         </div>
       </div>
     </div>

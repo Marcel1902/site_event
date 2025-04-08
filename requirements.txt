@@ -1,0 +1,15 @@
+django
+django-allauth
+djangorestframework
+django-crispy-forms
+stripe
+dj-stripe
+pillow
+qrcode[pil]
+sendgrid
+psycopg2
+gunicorn
+django-storages
+pytest-django
+django-debug-toolbar
+
