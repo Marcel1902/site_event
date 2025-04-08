@@ -1,0 +1,27 @@
+{% extends 'event/base.html' %}
+
+{% block title %}Liste des événements{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">📅 Événements à venir</h2>
+<div class="row">
+  {% for event in events %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        {% if event.image %}
+          <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ event.title }}</h5>
+          <p class="card-text">{{ event.description|truncatechars:100 }}</p>
+          <p class="text-muted">📍 {{ event.location }}</p>
+          <p class="text-muted">🕒 {{ event.date|date:"d/m/Y H:i" }}</p>
+          <a href="{% url 'event_detail' event.id %}" class="btn btn-primary btn-sm">Voir</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>Aucun événement pour le moment.</p>
+  {% endfor %}
+</div>
+{% endblock %}

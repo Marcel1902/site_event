@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My orders</title>
+</head>
+<body>
+    <h2>Mes Commandes</h2>
+    <ul>
+      {% for order in orders %}
+        <li>
+          {{ order.event.title }} - {{ order.total_price }} € - {{ order.status }} ({{ order.order_date }})
+        </li>
+      {% endfor %}
+    </ul>
+
+</body>
+</html>
